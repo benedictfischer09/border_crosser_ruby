@@ -1,43 +1,43 @@
-# BorderCrosser
+<div align="center">
+  <h1>border-crosser</h1>
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/border_crosser`. To experiment with that code, run `bin/console` for an interactive prompt.
+  <a href="https://www.emojione.com/emoji/1f5fa">
+  <img height="80" width="80" alt="octopus" src="https://raw.githubusercontent.com/benedictfischer09/border_crosser_ruby/master/other/map.png" />
+  </a>
 
-TODO: Delete this and the text above, and describe your gem
+  <p>Set it, forget it, find it. Trace requests across systems with ease.</p>
+</div>
+
+<hr />
+
+## The Problem
+
+Your code queues a background job? The background job sends a message on your message bus? Another app picks up that message and makes a HTTP request to one of your services.  On and on.  You won't remember to manually set a flag at every step to ensure you can trace this whole process, so let border crosser do it for you!
+
+## This Solution
+
+Most border points support passing metadata.  Think HTTP headers, kafka headers, sidekiq middleware args, etc.
+
+To make that metadata work to your advantage the calling code has to pass an identifier through the metadata, and the receiving code has to parse that metadata, grab the identifier, and hydrate it into a global store.
+
+Take sidekiq for example, border crosser gem adds sidekiq middleware to queue an identifier every time it queues a background job.  The worker middlware reads that identifier and hydrates it into a global store.  If the background job makes a HTTP request that library is monkey patched to send the identifier in the request headers.  On and on.
+
+
+## Is this safe in production?
+New relic's instrumentation gem and other performance monitoring tools also take this approach of monkey patching popular tools to get insights about what is happening and when.  If you trust those tools in production you can trust this approach.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'border_crosser'
+```
+gem install border_crosser
 ```
 
-And then execute:
+## Other Languages
 
-    $ bundle
+There is nothing stopping applications written in Python, Go, or any other langague from picking up the identifier and following this simple protocol.
 
-Or install it yourself as:
+Custom HTTP header: X-Distributed-Tracing
+Custom kafka header: X-Distributed-Tracing
 
-    $ gem install border_crosser
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/border_crosser. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the BorderCrosser project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/border_crosser/blob/master/CODE_OF_CONDUCT.md).
+More suppport for popular messaging tools like kinesis and sns are under investigation.
