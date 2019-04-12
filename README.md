@@ -49,7 +49,16 @@ gem install border_crosser
 
 There is nothing stopping applications written in Python, Go, or any other langague from picking up the identifier and following this simple protocol.
 
+```
 Custom HTTP header: X-Border-Crosser
 Custom kafka header: X-Border-Crosser
+```
 
-More suppport for popular messaging tools like kinesis and sns are under investigation.
+## Roadmap
+
+- [ ] HTTP clients (Excon, Net::HTTP, Typhoeus, HTTPClient, Curb, http.rb)
+- [ ] Kafka clients (ruby-kafka)
+- [ ] More background workers (Resque)
+- [ ] Better Configuration (Custom id generators)
+- [ ] Kinesis
+- [ ] SNS
