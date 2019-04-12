@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ben Fischer"]
   spec.email         = ["ben.fischer.810@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Trace requests across systems with ease"
+  spec.description   = "Border crosser works by adding middleware or monkey patching popular tools so that an identfier is passed automatically between calling/receiving apps without a developer having to do anything"
+  spec.homepage      = "https://github.com/benedictfischer09/border_crosser_ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
