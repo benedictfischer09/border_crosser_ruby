@@ -49,7 +49,7 @@ gem install border_crosser
 
 There is nothing stopping applications written in Python, Go, or any other langague from picking up the identifier and following this simple protocol.
 
-Custom HTTP header: X-Distributed-Tracing
-Custom kafka header: X-Distributed-Tracing
+Custom HTTP header: X-Border-Crosser
+Custom kafka header: X-Border-Crosser
 
 More suppport for popular messaging tools like kinesis and sns are under investigation.
