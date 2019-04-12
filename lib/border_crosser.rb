@@ -1,5 +1,5 @@
 require "border_crosser/version"
 
 module BorderCrosser
-  # Your code goes here...
+  autoload :Store, "border_crosser/store"
 end
